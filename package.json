@@ -23,6 +23,8 @@
     "motion": "^12.23.24"
   },
   "devDependencies": {
+    "vite": "^8.3.1",
+    "esbuild": "^0.28.0"
     "@types/node": "^22.14.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
