@@ -14,8 +14,9 @@ import {
   Volume2,
   VolumeX,
   Mail,
+  RotateCw,
 } from 'lucide-react';
-import HeroVideoCarousel from './components/HeroVideoCarousel';
+import HeroVideoCarousel, { CircularPortraitOrbit } from './components/HeroVideoCarousel';
 import {
   portfolioVideos,
   SOCIAL_LINKS,
@@ -99,8 +100,10 @@ export default function App() {
   const [activeVideoFilter, setActiveVideoFilter] = useState<
     'all' | 'hacks-edit' | 'car-speed' | 'sports-brand' | 'documentary'
   >('all');
+  const [showcaseOrbitDirection, setShowcaseOrbitDirection] = useState<1 | -1>(1);
+  const [showcaseHoveredCardId, setShowcaseHoveredCardId] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<VideoShowcaseItem | null>(null);
-  const [gradeSplit, setGradeSplit] = useState<number>(76);
+  const [gradeSplit, setGradeSplit] = useState<number>(74);
   const [activeMarkerIdx, setActiveMarkerIdx] = useState<number>(0);
   const [customYoutubeInput, setCustomYoutubeInput] = useState<string>('');
   const [customEmbeds, setCustomEmbeds] = useState<Record<string, string>>({});
@@ -183,7 +186,7 @@ export default function App() {
     setActiveMarkerIdx(0);
   };
 
-  const generatedBriefText = `Hi Deergh! I'd love to collaborate on video editing for my channel.
+  const generatedBriefText = `Hi Deergh! I'd love to collaborate on 9:16 video editing for my channel.
 • Primary Service: ${selectedServiceType}
 • Editing Style / Format: ${selectedFormatTag}
 • Volume: ${monthlyVolume} videos / month
@@ -195,7 +198,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
       {/* Header: Sticky Studio Top Bar */}
       <header className="sticky top-0 z-40 bg-[#070707]/90 backdrop-blur-xl border-b border-white/[0.08] px-6 py-4 no-print">
         <div className="max-w-[1240px] mx-auto flex items-center justify-between gap-6">
-          {/* Logo Wordmark */}
           <a
             href="#"
             className="font-display text-xl font-extrabold tracking-tight text-white hover:text-[#FF6A32] transition-colors whitespace-nowrap"
@@ -203,7 +205,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
             DEERGH<span className="text-[#FF6A32]">.</span>
           </a>
 
-          {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#D6D6D6]">
             <a
               href="#services"
@@ -243,7 +244,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
             </a>
           </nav>
 
-          {/* Primary Header CTA */}
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -257,7 +257,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
       </header>
 
       <main className="flex-1">
-        {/* Redesigned Cinematic Agency Hero with 3D Continuous Infinite Video Carousel */}
+        {/* Hero with Continuous 3D Circular Orbiting 9:16 Portrait Video Cards */}
         <HeroVideoCarousel
           videos={portfolioVideos}
           onSelectProject={handleOpenCarouselProject}
@@ -265,7 +265,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
           onViewWork={() => scrollToSection('videos')}
         />
 
-        {/* Smooth Studio Orange Glow Line Separator into Experience & Services */}
         <div className="section-divider-glow" aria-hidden="true" />
 
         {/* Experience & Core Formats Strip (Talking Head, Documentary, Speed Ramp, Car Edit, CapCut, HACKS & Sports Brand Page) */}
@@ -274,7 +273,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
               <div>
                 <p className="text-xs font-mono-tabular uppercase tracking-widest text-[#FF6A32] mb-1.5">
-                  Specialized Editing Formats
+                  Specialized 9:16 &amp; Cinematic Formats
                 </p>
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white">
                   Production Experience Across High-Retention Genres
@@ -333,12 +332,12 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                 Services
               </h2>
               <p className="text-sm sm:text-base text-[#929292] mt-3 leading-relaxed">
-                Every frame is cut with platform algorithms and viewer psychology in mind—from
-                talking-head hooks and documentary narratives to high-velocity car speed ramps.
+                Every 9:16 vertical frame is cut with platform algorithms and viewer psychology in
+                mind—from talking-head hooks and documentary narratives to high-velocity car speed
+                ramps.
               </p>
             </div>
 
-            {/* 6 Services Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {SERVICES.map((service) => (
                 <div
@@ -393,18 +392,16 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   <h3 className="font-display text-2xl font-bold text-white">Why Choose Me</h3>
                 </div>
                 <p className="text-xs font-mono-tabular text-[#929292]">
-                  YouTube · TikTok · Instagram Reels · Snapchat
+                  YouTube Shorts · TikTok · Instagram Reels · Snapchat
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-                {WHY_CHOOSE_ME.map((item, idx) => (
+                {WHY_CHOOSE_ME.map((item) => (
                   <div key={item.title} className="space-y-1">
                     <div className="flex items-baseline justify-between gap-2">
                       <h4 className="text-base font-semibold text-white">
-                        <span className="text-[#FF6A32] font-mono-tabular mr-2">
-                          ✓
-                        </span>
+                        <span className="text-[#FF6A32] font-mono-tabular mr-2">✓</span>
                         {item.title}
                       </h4>
                       <span className="text-xs font-mono-tabular text-[#FF9A62] whitespace-nowrap">
@@ -480,247 +477,214 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
 
         <div className="section-divider-glow" aria-hidden="true" />
 
-        {/* Video Showcase Section (#videos) */}
-        <section id="videos" className="py-20 px-6 bg-[#070707]">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+        {/* Video Showcase Section (#videos) — Upgraded to 9:16 Portrait Circular Orbit + 9:16 Portrait Showcase Cards */}
+        <section
+          id="videos"
+          className="py-20 px-6 relative overflow-hidden"
+          style={{
+            background: `
+              radial-gradient(circle at 50% 28%, rgba(255, 106, 50, 0.14), transparent 46%),
+              #070707
+            `,
+          }}
+        >
+          <div className="max-w-[1320px] mx-auto">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
               <div className="max-w-2xl">
                 <p className="text-xs font-mono-tabular uppercase tracking-widest text-[#FF6A32] mb-2">
-                  Selected Works &amp; Showreel
+                  9:16 Vertical Showreel &amp; Interactive Orbit
                 </p>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">
                   Video Showcase
                 </h2>
                 <p className="text-sm sm:text-base text-[#929292] mt-3 leading-relaxed">
-                  Watch my latest work from the{' '}
-                  <span className="text-white font-medium">HACKS EDIT</span> channel, alongside
-                  Talking Head reels, Speed Ramp Car Edits, Sports Brand Pages, and Documentary
-                  visuals. Click any project to inspect the cut breakdown or embed a live YouTube
-                  video.
+                  Explore my 9:16 portrait edits from the{' '}
+                  <span className="text-white font-medium">HACKS EDIT</span> channel, Talking Head
+                  reels, Speed Ramp Car Edits, Sports Brand Pages, and Vertical Documentaries.
+                  Hover over any orbiting 9:16 card to smoothly zoom in (1.22x) while the circular
+                  motion continues.
                 </p>
               </div>
 
-              {/* Filter Controls */}
-              <div className="flex flex-wrap items-center gap-1 p-1 bg-[#0B0B0C] border border-white/10 rounded-xl self-start">
-                {(
-                  [
-                    { id: 'all', label: 'All Work' },
-                    { id: 'hacks-edit', label: 'HACKS EDIT & Talking Head' },
-                    { id: 'car-speed', label: 'Car Edit & Speed Ramp' },
-                    { id: 'sports-brand', label: 'Sports Brand Page' },
-                    { id: 'documentary', label: 'Documentary' },
-                  ] as const
-                ).map((tab) => (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setActiveVideoFilter(tab.id)}
-                    className={`px-3.5 py-2 text-xs font-medium rounded-lg transition-colors duration-150 whitespace-nowrap cursor-pointer ${
-                      activeVideoFilter === tab.id
-                        ? 'bg-[#FF6A32] text-[#070707] font-semibold'
-                        : 'text-[#929292] hover:text-white'
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
+              {/* Orbit Direction & Category Filter Controls */}
+              <div className="flex flex-wrap items-center gap-2 self-start">
+                <button
+                  type="button"
+                  onClick={() => setShowcaseOrbitDirection((d) => (d === 1 ? -1 : 1))}
+                  className="px-3.5 py-2 text-xs font-mono-tabular font-medium bg-[#0B0B0C] hover:bg-[#111214] text-[#D6D6D6] hover:text-white border border-white/10 hover:border-[#FF6A32]/50 rounded-xl inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <RotateCw className="w-3.5 h-3.5 text-[#FF6A32]" />
+                  <span>Reverse Orbit</span>
+                </button>
+
+                <div className="flex flex-wrap items-center gap-1 p-1 bg-[#0B0B0C] border border-white/10 rounded-xl">
+                  {(
+                    [
+                      { id: 'all', label: 'All 9:16 Reels' },
+                      { id: 'hacks-edit', label: 'HACKS EDIT & Talking Head' },
+                      { id: 'car-speed', label: 'Car Edit & Speed Ramp' },
+                      { id: 'sports-brand', label: 'Sports Brand' },
+                      { id: 'documentary', label: 'Documentary' },
+                    ] as const
+                  ).map((tab) => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => setActiveVideoFilter(tab.id)}
+                      className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors duration-150 whitespace-nowrap cursor-pointer ${
+                        activeVideoFilter === tab.id
+                          ? 'bg-[#FF6A32] text-[#070707] font-semibold'
+                          : 'text-[#929292] hover:text-white'
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Video Showcase Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Interactive 3D Circular Orbiting 9:16 Portrait Stage inside #videos */}
+            <div className="mb-16">
+              <CircularPortraitOrbit
+                videos={portfolioVideos}
+                onSelectProject={handleOpenCarouselProject}
+                orbitSpeed={0.2}
+                direction={showcaseOrbitDirection}
+                compact
+              />
+            </div>
+
+            {/* 2-Column 16:9 Widescreen Detailed Breakdown Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {filteredVideos.map((video) => {
                 const activeEmbedUrl = customEmbeds[video.id];
+                const isCardHovered = showcaseHoveredCardId === video.id;
+                const isCardDimmed =
+                  showcaseHoveredCardId !== null && showcaseHoveredCardId !== video.id;
 
                 return (
                   <article
                     key={video.id}
-                    className="lg:col-span-6 group rounded-2xl overflow-hidden bg-[#0B0B0C] border border-white/[0.08] hover:border-[#FF6A32]/45 transition-all duration-200 flex flex-col justify-between"
+                    onMouseEnter={() => setShowcaseHoveredCardId(video.id)}
+                    onMouseLeave={() =>
+                      setShowcaseHoveredCardId((prev) => (prev === video.id ? null : prev))
+                    }
+                    style={{
+                      transform: isCardHovered
+                        ? 'scale3d(1.03, 1.03, 1) translate3d(0, -4px, 0)'
+                        : 'scale3d(1, 1, 1)',
+                      transition:
+                        'transform 420ms cubic-bezier(0.16, 1, 0.3, 1), opacity 350ms ease, filter 350ms ease, border-color 350ms ease',
+                      opacity: isCardDimmed ? 0.65 : 1,
+                      zIndex: isCardHovered ? 30 : 1,
+                    }}
+                    className="group relative rounded-[22px] overflow-hidden bg-[#0B0B0C] border border-white/[0.09] hover:border-[#FF6A32]/60 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.85)] flex flex-col justify-between"
                   >
-                    <div>
-                      <div className="relative aspect-video bg-black overflow-hidden">
-                        {activeEmbedUrl ? (
-                          <iframe
-                            src={activeEmbedUrl}
-                            title={video.title}
-                            className="w-full h-full border-0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        ) : (
-                          <div
-                            onClick={() => {
+                    {/* 16:9 Widescreen Video Container */}
+                    <div
+                      style={{ aspectRatio: '16 / 9' }}
+                      className="relative w-full aspect-video bg-black overflow-hidden"
+                    >
+                      {activeEmbedUrl ? (
+                        <iframe
+                          src={activeEmbedUrl}
+                          title={video.title}
+                          className="w-full h-full border-0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <div
+                          onClick={() => {
+                            setSelectedVideo(video);
+                            setActiveMarkerIdx(0);
+                          }}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
                               setSelectedVideo(video);
                               setActiveMarkerIdx(0);
-                            }}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                setSelectedVideo(video);
-                                setActiveMarkerIdx(0);
-                              }
-                            }}
-                            className="w-full h-full relative cursor-pointer"
-                          >
-                            <video
-                              src={video.videoSrc}
-                              poster={video.thumbnail}
-                              autoPlay
-                              muted
-                              loop
-                              playsInline
-                              preload="metadata"
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                            }
+                          }}
+                          className="w-full h-full relative cursor-pointer"
+                        >
+                          <video
+                            src={video.videoSrc}
+                            poster={video.thumbnail}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
 
-                            <div className="absolute top-3.5 left-4 right-4 flex items-center justify-between text-xs font-mono-tabular text-white/90">
-                              <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
-                                {video.categoryLabel}
-                              </span>
-                              <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
-                                {video.duration} · {video.fps}
-                              </span>
-                            </div>
+                          {/* Top 16:9 Metadata Badge */}
+                          <div className="absolute top-3.5 left-4 right-4 flex items-center justify-between text-[11px] font-mono-tabular text-white/90">
+                            <span className="bg-black/65 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 truncate max-w-[75%]">
+                              {video.categoryLabel}
+                            </span>
+                            <span className="bg-[#FF6A32] text-[#070707] font-bold px-2.5 py-0.5 rounded-full">
+                              16:9
+                            </span>
+                          </div>
 
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-14 h-14 rounded-full bg-[#FF6A32]/95 text-[#070707] flex items-center justify-center shadow-lg transition-transform duration-200 group-hover:scale-110">
-                                <Play className="w-6 h-6 fill-[#070707] ml-0.5" />
-                              </div>
-                            </div>
-
-                            <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-xs font-mono-tabular text-[#D6D6D6]">
-                              <span>3s Hook Hold: {video.hookRate}</span>
-                              <span className="text-[#FF9A62]">
-                                Avg. Retention: {video.avgRetention}
-                              </span>
+                          {/* Center Play / Inspect Button */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-14 h-14 rounded-full bg-[#FF6A32]/95 text-[#070707] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                              <Play className="w-6 h-6 fill-[#070707] ml-0.5" />
                             </div>
                           </div>
-                        )}
-                      </div>
 
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 text-xs text-[#929292] font-mono-tabular mb-2">
-                          <span>{video.softwareUsed}</span>
+                          {/* Bottom Hook & Retention Metrics Inside 16:9 Frame */}
+                          <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-xs font-mono-tabular text-[#FF9A62]">
+                            <span className="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded border border-white/10">
+                              3s Hook: {video.hookRate}
+                            </span>
+                            <span className="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded border border-white/10">
+                              Retention: {video.avgRetention}
+                            </span>
+                          </div>
                         </div>
-                        <h3 className="font-display text-xl font-bold text-white mb-1.5">
-                          {video.title}
-                        </h3>
-                        <p className="text-sm text-[#FF9A62] font-medium mb-3">
-                          {video.subtitle}
-                        </p>
-                        <p className="text-sm text-[#929292] leading-relaxed">
-                          {video.description}
-                        </p>
-                      </div>
+                      )}
                     </div>
 
-                    <div className="px-6 py-4 border-t border-white/[0.07] flex flex-wrap items-center justify-between gap-3 bg-[#111214]">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSelectedVideo(video);
-                          setActiveMarkerIdx(0);
-                        }}
-                        className="text-xs font-semibold text-white hover:text-[#FF6A32] inline-flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap"
-                      >
-                        <Sliders className="w-3.5 h-3.5 text-[#FF6A32]" />
-                        <span>Inspect Timeline &amp; Cuts</span>
-                      </button>
-
-                      <a
-                        href={video.defaultYoutubeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-semibold text-[#D6D6D6] hover:text-[#FF6A32] inline-flex items-center gap-1 whitespace-nowrap transition-colors"
-                      >
-                        <span>Watch on @deerghhadiyal</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                    {/* Card Details Body Below 16:9 Player */}
+                    <div
+                      onClick={() => {
+                        setSelectedVideo(video);
+                        setActiveMarkerIdx(0);
+                      }}
+                      className="p-6 space-y-2.5 cursor-pointer"
+                    >
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-[#FF9A62] transition-colors">
+                        {video.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[#929292] leading-relaxed">
+                        {video.description}
+                      </p>
+                      <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-semibold text-[#FF6A32]">
+                        <span className="inline-flex items-center gap-1.5">
+                          <Sliders className="w-3.5 h-3.5" />
+                          <span>Inspect Cut Breakdown</span>
+                        </span>
+                        <span className="font-mono-tabular text-[#D6D6D6]">{video.duration}</span>
+                      </div>
                     </div>
                   </article>
                 );
               })}
-
-              {/* Interactive Before/After Color Grade Comparison Card */}
-              {activeVideoFilter === 'all' && (
-                <div className="lg:col-span-12 rounded-2xl bg-[#0B0B0C] border border-white/[0.08] p-6 sm:p-8">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div className="lg:col-span-5 space-y-4">
-                      <span className="text-xs font-mono-tabular uppercase tracking-widest text-[#FF6A32]">
-                        DaVinci Resolve Look Development
-                      </span>
-                      <h3 className="font-display text-2xl sm:text-3xl font-bold text-white">
-                        Flat Camera Log vs. Cinematic Master Grade
-                      </h3>
-                      <p className="text-sm text-[#929292] leading-relaxed">
-                        Drag the interactive split-screen wipe to compare ungraded camera log
-                        against the final split-tone color grade applied to Car Edits,
-                        Documentaries, and HACKS EDIT uploads.
-                      </p>
-                      <div className="pt-2 space-y-2">
-                        <div className="flex items-center justify-between text-xs font-mono-tabular">
-                          <span className="text-[#929292]">0% Raw S-Log3</span>
-                          <span className="text-[#FF9A62]">{gradeSplit}% Graded Master</span>
-                        </div>
-                        <input
-                          type="range"
-                          min={5}
-                          max={95}
-                          value={gradeSplit}
-                          onChange={(e) => setGradeSplit(Number(e.target.value))}
-                          aria-label="Color grade comparison slider"
-                          className="w-full accent-[#FF6A32] cursor-pointer"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-7">
-                      <div className="relative aspect-video rounded-xl overflow-hidden select-none border border-white/10">
-                        <ResilientImage
-                          src={VIDEO_SHOWCASE[1].thumbnail}
-                          alt="Raw Flat Log Footage"
-                          className="w-full h-full object-cover"
-                          style={{
-                            filter: 'saturate(0.38) contrast(0.78) brightness(0.95)',
-                          }}
-                        />
-                        <div
-                          className="absolute inset-0 overflow-hidden"
-                          style={{ clipPath: `inset(0 ${100 - gradeSplit}% 0 0)` }}
-                        >
-                          <ResilientImage
-                            src={VIDEO_SHOWCASE[1].thumbnail}
-                            alt="Final Graded Footage"
-                            className="w-full h-full object-cover"
-                            style={{
-                              filter: 'saturate(1.28) contrast(1.18) brightness(1.04)',
-                            }}
-                          />
-                        </div>
-                        <div
-                          className="absolute top-0 bottom-0 w-0.5 bg-[#FF6A32] shadow-[0_0_12px_#FF6A32]"
-                          style={{ left: `${gradeSplit}%` }}
-                        />
-                        <div className="absolute top-3 left-3 text-xs font-mono-tabular text-white bg-black/70 px-2.5 py-1 rounded">
-                          FINAL GRADE · Rec.709 + Halation
-                        </div>
-                        <div className="absolute top-3 right-3 text-xs font-mono-tabular text-[#D6D6D6] bg-black/70 px-2.5 py-1 rounded">
-                          RAW S-Log3 · Flat Profile
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Channel CTA Footer */}
             <div className="mt-12 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-sm text-[#929292]">
-                Want to see more? Visit my YouTube channel for the complete collection.
+                Want to see more 9:16 Shorts and Reels? Visit my YouTube channel for the complete
+                collection.
               </p>
               <a
                 href={SOCIAL_LINKS.youtubeChannel}
@@ -728,7 +692,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                 rel="noopener noreferrer"
                 className="px-6 py-3 text-sm font-semibold bg-[#FF6A32] text-[#070707] rounded-lg hover:bg-[#FF9A62] transition-colors inline-flex items-center gap-2 whitespace-nowrap"
               >
-                <span>Visit YouTube Channel</span>
+                <span>Visit YouTube Channel (@deerghhadiyal)</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
@@ -813,8 +777,8 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   Master Output Standards
                 </div>
                 <p className="text-sm text-[#D6D6D6] leading-relaxed">
-                  H.264 / Apple ProRes 422 HQ · 1080x1920 (9:16 Vertical) &amp; 3840x2160 (16:9
-                  UHD) · Rec.709 Color Space · -14 LUFS Normalized Stereo Master
+                  H.264 / Apple ProRes 422 HQ · 1080x1920 (9:16 Vertical Portrait) · Rec.709 Color
+                  Space · -14 LUFS Normalized Stereo Master
                 </p>
               </div>
             </div>
@@ -952,7 +916,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
               </div>
 
               <div className="space-y-6">
-                {/* Format / Experience Selector */}
                 <div>
                   <label className="block text-xs font-mono-tabular text-[#929292] mb-2">
                     01. Select Editing Format
@@ -975,7 +938,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   </div>
                 </div>
 
-                {/* Primary Service Selector */}
                 <div>
                   <label className="block text-xs font-mono-tabular text-[#929292] mb-2">
                     02. Select Primary Service
@@ -998,7 +960,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   </div>
                 </div>
 
-                {/* Volume & Turnaround */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-mono-tabular text-[#929292] mb-2">
@@ -1059,7 +1020,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   </div>
                 </div>
 
-                {/* Creator Details */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -1112,7 +1072,6 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   />
                 </div>
 
-                {/* Action Buttons */}
                 <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
                   <button
                     type="button"
@@ -1191,7 +1150,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
         </div>
       </footer>
 
-      {/* Fullscreen Lightbox Modal for Video Showcase & Timeline Breakdown */}
+      {/* Fullscreen Lightbox Modal for 9:16 Portrait Video Showcase & Timeline Breakdown */}
       {selectedVideo && (
         <div
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto no-print"
@@ -1203,7 +1162,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
             <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between gap-4 bg-[#070707]">
               <div className="min-w-0">
                 <div className="text-xs font-mono-tabular text-[#FF6A32]">
-                  {selectedVideo.categoryLabel} · {selectedVideo.resolution} · {selectedVideo.fps}
+                  {selectedVideo.categoryLabel} · 16:9 Widescreen · {selectedVideo.fps}
                 </div>
                 <h3 className="font-display text-lg sm:text-xl font-bold text-white truncate">
                   {selectedVideo.title}
@@ -1220,8 +1179,12 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12">
-              <div className="lg:col-span-8 bg-black flex flex-col justify-between">
-                <div className="relative aspect-video overflow-hidden">
+              {/* Left 7 Cols: 16:9 Widescreen Player */}
+              <div className="lg:col-span-7 bg-black flex flex-col items-center justify-center p-5">
+                <div
+                  style={{ aspectRatio: '16 / 9' }}
+                  className="relative w-full aspect-video rounded-[18px] overflow-hidden border border-white/15 shadow-2xl bg-[#070707]"
+                >
                   {customEmbeds[selectedVideo.id] ? (
                     <iframe
                       src={customEmbeds[selectedVideo.id]}
@@ -1243,106 +1206,50 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
 
-                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono-tabular text-white">
-                        <span className="bg-black/75 px-3 py-1.5 rounded border border-white/10">
-                          {selectedVideo.timelineMarkers[activeMarkerIdx]?.time} —{' '}
-                          <strong className="text-[#FF6A32]">
-                            {selectedVideo.timelineMarkers[activeMarkerIdx]?.label}
-                          </strong>
+                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono-tabular text-white">
+                        <span className="bg-black/75 px-2.5 py-1 rounded-full border border-white/10">
+                          16:9 MASTER
                         </span>
                         <button
                           type="button"
                           onClick={() => setIsMutedPreview((m) => !m)}
-                          className="p-2 bg-black/75 rounded border border-white/10 text-white hover:text-[#FF6A32] cursor-pointer"
+                          className="p-2 bg-black/75 rounded-full border border-white/10 text-white hover:text-[#FF6A32] cursor-pointer"
                           aria-label={isMutedPreview ? 'Unmute video' : 'Mute video'}
                         >
                           {isMutedPreview ? (
-                            <VolumeX className="w-4 h-4" />
+                            <VolumeX className="w-3.5 h-3.5" />
                           ) : (
-                            <Volume2 className="w-4 h-4 text-[#FF6A32]" />
+                            <Volume2 className="w-3.5 h-3.5 text-[#FF6A32]" />
                           )}
                         </button>
                       </div>
 
-                      <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm border border-white/10 rounded-xl p-4 pointer-events-none">
-                        <div className="flex items-center justify-between text-xs font-mono-tabular text-[#FF6A32] mb-1">
-                          <span>Active Cut Breakdown</span>
-                          <span>
-                            3s Hook: {selectedVideo.hookRate} · Retention:{' '}
-                            {selectedVideo.avgRetention}
-                          </span>
+                      <div className="absolute bottom-3 left-3 right-3 bg-black/80 backdrop-blur-sm border border-white/10 rounded-xl p-3 pointer-events-none">
+                        <div className="text-[10px] font-mono-tabular text-[#FF6A32] mb-0.5">
+                          {selectedVideo.timelineMarkers[activeMarkerIdx]?.time} ·{' '}
+                          {selectedVideo.timelineMarkers[activeMarkerIdx]?.label}
                         </div>
-                        <p className="text-sm text-white">
+                        <p className="text-xs text-white leading-snug">
                           {selectedVideo.timelineMarkers[activeMarkerIdx]?.detail}
                         </p>
                       </div>
                     </>
                   )}
                 </div>
-
-                <div className="p-4 bg-[#070707] border-t border-white/10 space-y-3">
-                  <div className="flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setIsPlayingPreview((p) => !p)}
-                      className="px-3 py-1.5 text-xs font-mono-tabular font-semibold bg-[#FF6A32] text-[#070707] rounded cursor-pointer whitespace-nowrap"
-                    >
-                      {isPlayingPreview ? 'Pause Scrubber' : 'Resume Scrubber'}
-                    </button>
-                    <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[#FF6A32] transition-all duration-150"
-                        style={{ width: `${playheadProgress}%` }}
-                      />
-                    </div>
-                    <span className="text-xs font-mono-tabular text-[#929292]">
-                      {selectedVideo.duration}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 border-t border-white/10">
-                    <input
-                      type="text"
-                      value={customYoutubeInput}
-                      onChange={(e) => setCustomYoutubeInput(e.target.value)}
-                      placeholder="Paste any YouTube Video or Short URL from @deerghhadiyal to embed live..."
-                      className="flex-1 px-3 py-1.5 text-xs bg-[#111214] border border-white/15 rounded text-white placeholder:text-[#929292]/60 focus:outline-none focus:border-[#FF6A32]"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => handleApplyCustomEmbed(selectedVideo.id)}
-                      className="px-3.5 py-1.5 text-xs font-semibold bg-[#FF6A32] text-[#070707] rounded hover:bg-[#FF9A62] transition-colors cursor-pointer whitespace-nowrap"
-                    >
-                      Load YouTube Video
-                    </button>
-                    {customEmbeds[selectedVideo.id] && (
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setCustomEmbeds((prev) => {
-                            const next = { ...prev };
-                            delete next[selectedVideo.id];
-                            return next;
-                          })
-                        }
-                        className="px-3 py-1.5 text-xs text-[#D6D6D6] hover:text-white bg-white/10 rounded cursor-pointer whitespace-nowrap"
-                      >
-                        Reset View
-                      </button>
-                    )}
-                  </div>
-                </div>
               </div>
 
-              {/* Right 4 Cols: Cut-by-Cut Timeline Breakdown */}
-              <div className="lg:col-span-4 p-6 bg-[#0B0B0C] border-l border-white/10 flex flex-col justify-between space-y-6">
-                <div>
-                  <div className="text-xs font-mono-tabular text-[#FF6A32] mb-1">
-                    Frame-Accurate Anatomy
+              {/* Right 5 Cols: Cut-by-Cut Timeline Breakdown & Live Video Embedder */}
+              <div className="lg:col-span-5 p-6 bg-[#0B0B0C] border-l border-white/10 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-xs font-mono-tabular text-[#FF6A32] mb-1">
+                      Frame-Accurate 16:9 Anatomy · Hook: {selectedVideo.hookRate} · Retention:{' '}
+                      {selectedVideo.avgRetention}
+                    </div>
+                    <h4 className="font-display text-lg font-bold text-white">
+                      Retention Timeline Markers
+                    </h4>
                   </div>
-                  <h4 className="font-display text-lg font-bold text-white mb-4">
-                    Retention Timeline Markers
-                  </h4>
 
                   <div className="space-y-2.5">
                     {selectedVideo.timelineMarkers.map((marker, idx) => (
@@ -1372,16 +1279,55 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                       </button>
                     ))}
                   </div>
+
+                  {/* Scrubber & Custom YouTube Short URL Loader */}
+                  <div className="pt-3 border-t border-white/10 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setIsPlayingPreview((p) => !p)}
+                        className="px-3 py-1.5 text-xs font-mono-tabular font-semibold bg-[#FF6A32] text-[#070707] rounded cursor-pointer whitespace-nowrap"
+                      >
+                        {isPlayingPreview ? 'Pause Scrubber' : 'Resume Scrubber'}
+                      </button>
+                      <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-[#FF6A32] transition-all duration-150"
+                          style={{ width: `${playheadProgress}%` }}
+                        />
+                      </div>
+                      <span className="text-xs font-mono-tabular text-[#929292]">
+                        {selectedVideo.duration}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                      <input
+                        type="text"
+                        value={customYoutubeInput}
+                        onChange={(e) => setCustomYoutubeInput(e.target.value)}
+                        placeholder="Paste any YouTube Short URL from @deerghhadiyal..."
+                        className="flex-1 px-3 py-1.5 text-xs bg-[#111214] border border-white/15 rounded text-white placeholder:text-[#929292]/60 focus:outline-none focus:border-[#FF6A32]"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleApplyCustomEmbed(selectedVideo.id)}
+                        className="px-3.5 py-1.5 text-xs font-semibold bg-[#FF6A32] text-[#070707] rounded hover:bg-[#FF9A62] transition-colors cursor-pointer whitespace-nowrap"
+                      >
+                        Load 9:16 Short
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
+                <div className="pt-4 border-t border-white/10">
                   <a
                     href={selectedVideo.defaultYoutubeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-2.5 px-4 text-xs font-semibold bg-[#FF6A32] text-[#070707] rounded-lg hover:bg-[#FF9A62] transition-colors inline-flex items-center justify-center gap-1.5"
                   >
-                    <span>Watch Full Channel on YouTube</span>
+                    <span>Watch Full Channel on YouTube (@deerghhadiyal)</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
@@ -1452,7 +1398,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                   Executive Summary
                 </h3>
                 <p className="text-sm text-[#D6D6D6] leading-relaxed">
-                  Professional video editor specializing in Talking Head edits, Documentary
+                  Professional video editor specializing in 9:16 Talking Head edits, Documentary
                   storytelling, Speed Ramp car edits, CapCut &amp; After Effects hybrid workflows,
                   and high-performing Sports Brand Pages / HACKS EDIT viral content.
                 </p>
@@ -1488,7 +1434,7 @@ ${clientName ? `• Name: ${clientName}\n` : ''}${clientChannel ? `• Channel /
                 <div>
                   <strong className="text-[#FF6A32]">Specializations:</strong> Talking Head ·
                   Documentary · Speed Ramp · Car Edit · HACKS EDIT &amp; Sports Brand Page ·
-                  Short-Form Video · Motion Graphics · Color Grading
+                  Short-Form Video (9:16) · Motion Graphics · Color Grading
                 </div>
                 <div>
                   <strong className="text-[#FF6A32]">Platforms:</strong> YouTube · Instagram ·

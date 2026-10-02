@@ -2,13 +2,16 @@ import heroEditingSuiteImg from '../assets/images/hero_editing_suite_17905287379
 import showcaseHacksEditImg from '../assets/images/showcase_hacks_edit_1790528752374.jpg';
 import showcaseViralRetentionImg from '../assets/images/showcase_viral_retention_1790528765326.jpg';
 import showcaseColorGradeImg from '../assets/images/showcase_color_grade_1790528777648.jpg';
+import reelTalkingHeadImg from '../assets/images/reel_talking_head_creator_1790941012242.jpg';
+import reelSportsRunnerImg from '../assets/images/reel_sports_runner_action_1790941029854.jpg';
+import reelCarSpeedRampImg from '../assets/images/reel_car_speed_ramp_1790941042144.jpg';
+import reelDocumentaryImg from '../assets/images/reel_documentary_cinematic_1790941054742.jpg';
 
 export interface PortfolioCarouselVideo {
   id: number;
   title: string;
   category: string;
   src: string;
-  fallbackSrc?: string;
   poster: string;
   duration: string;
   retentionMetric: string;
@@ -18,29 +21,42 @@ export interface PortfolioCarouselVideo {
 }
 
 /**
- * Easy-to-update array for the 3D Continuous Hero Video Carousel.
- * Replace `src` with your local MP4 files (e.g., "videos/video1.mp4") or hosted MP4 URLs.
+ * 9:16 Portrait Video Cards for the Continuous Circular/Orbiting 3D Stage.
+ * Every card strictly renders in a 9:16 portrait aspect ratio with object-fit: cover.
  */
 export const portfolioVideos: PortfolioCarouselVideo[] = [
   {
     id: 1,
-    title: 'HACKS EDIT — Viral Short-Form',
-    category: 'Talking Head • Hooks',
+    title: 'Studio Talking Head Hook',
+    category: 'Talking Head • Reels',
     src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    poster: showcaseHacksEditImg,
+    poster: reelTalkingHeadImg,
     duration: '00:58',
     retentionMetric: '94.2% Retention',
     software: 'Premiere Pro • After Effects • CapCut',
     description:
-      'High-retention talking-head and entertainment edit featuring 3-second visual hooks, dynamic captions, and layered SFX.',
+      'High-retention 9:16 talking-head studio edit featuring 3-second visual hooks, dynamic captions, and layered SFX.',
     showcaseId: 'hacks-edit-latest',
   },
   {
     id: 2,
-    title: 'Speed Ramp Car Edit',
-    category: 'Car Edit • Speed Ramp',
+    title: 'Lifestyle Creator Viral Cut',
+    category: 'Short Video Editing',
+    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+    poster: showcaseHacksEditImg,
+    duration: '00:48',
+    retentionMetric: '92.8% Watch Time',
+    software: 'CapCut Pro • Premiere Pro',
+    description:
+      'Fast-paced vertical creator storytelling with seamless J-cuts, kinetic typography, and retention b-roll.',
+    showcaseId: 'hacks-edit-latest',
+  },
+  {
+    id: 3,
+    title: 'Product & Brand Hook Reel',
+    category: 'Content Strategy',
     src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-    poster: showcaseColorGradeImg,
+    poster: reelCarSpeedRampImg,
     duration: '00:42',
     retentionMetric: '96.0% Beat Sync',
     software: 'After Effects • DaVinci Resolve • CapCut',
@@ -49,56 +65,69 @@ export const portfolioVideos: PortfolioCarouselVideo[] = [
     showcaseId: 'car-speed-ramp',
   },
   {
-    id: 3,
-    title: 'Sports Brand Page Commercial',
+    id: 4,
+    title: 'Golden Hour Athlete Action',
     category: 'Sports Brand • Hacks',
     src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-    poster: showcaseViralRetentionImg,
+    poster: reelSportsRunnerImg,
     duration: '00:45',
     retentionMetric: '91.8% Watch-Through',
     software: 'Premiere Pro • After Effects • Audition',
     description:
-      'High-adrenaline sports brand page reel engineered with whip transitions, stadium riser sound design, and kinetic typography.',
+      'High-adrenaline 9:16 sports brand page reel engineered with whip transitions, riser sound design, and kinetic callouts.',
     showcaseId: 'sports-brand-edit',
   },
   {
-    id: 4,
-    title: 'Documentary Visual Narrative',
-    category: 'Documentary • Storytelling',
+    id: 5,
+    title: 'Misty Forest Documentary',
+    category: 'Documentary • Grade',
     src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    poster: heroEditingSuiteImg,
-    duration: '01:24',
+    poster: reelDocumentaryImg,
+    duration: '01:15',
     retentionMetric: '89.6% Avg View',
     software: 'DaVinci Resolve • Premiere Pro • Audition',
     description:
-      'Atmospheric documentary pacing with archival overlays, 3D camera projection, emotional soundscapes, and filmic grading.',
+      'Atmospheric vertical documentary pacing with archival overlays, 3D camera projection, emotional soundscapes, and filmic grading.',
     showcaseId: 'documentary-story',
   },
   {
-    id: 5,
-    title: 'Talking Head Authority Reel',
-    category: 'Talking Head • CapCut & AE',
-    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    poster: showcaseHacksEditImg,
+    id: 6,
+    title: 'Neon Studio Creator Cut',
+    category: 'Talking Head • CapCut',
+    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+    poster: heroEditingSuiteImg,
     duration: '00:52',
-    retentionMetric: '92.4% 3s Hold',
-    software: 'CapCut Pro • Premiere Pro • After Effects',
+    retentionMetric: '93.4% 3s Hold',
+    software: 'CapCut Pro • After Effects',
     description:
       'Clean creator talking-head cut eliminating dead air with J/L cuts, custom motion graphics callouts, and retention b-roll.',
-    showcaseId: 'talking-head-reel',
+    showcaseId: 'hacks-edit-latest',
   },
   {
-    id: 6,
-    title: 'Bullrun Automotive Documentary',
-    category: 'Car Edit • Documentary',
-    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
-    poster: showcaseColorGradeImg,
-    duration: '01:12',
-    retentionMetric: '90.8% Completion',
-    software: 'DaVinci Resolve • Premiere Pro',
+    id: 7,
+    title: 'Executive Authority Short',
+    category: 'Growth Optimization',
+    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4',
+    poster: showcaseViralRetentionImg,
+    duration: '00:55',
+    retentionMetric: '95.1% Completion',
+    software: 'Premiere Pro • DaVinci Resolve',
     description:
-      'Motorsport documentary storytelling blending rolling automotive cinematography, engine foley layering, and split-tone LUTs.',
-    showcaseId: 'studio-quality-grade',
+      'Founder & executive talking-head vertical reel engineered to build brand trust and maximize organic subscriber conversion.',
+    showcaseId: 'documentary-story',
+  },
+  {
+    id: 8,
+    title: 'Midnight Tunnel Car Edit',
+    category: 'Car Edit • Speed Ramp',
+    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    poster: showcaseColorGradeImg,
+    duration: '00:38',
+    retentionMetric: '97.2% Replay Rate',
+    software: 'After Effects • CapCut Pro • DaVinci Resolve',
+    description:
+      'Seamless loop 9:16 automotive speed-ramp edit with custom turbo foley, halation glow, and frame-accurate beat locks.',
+    showcaseId: 'car-speed-ramp',
   },
 ];
 
@@ -124,14 +153,14 @@ export interface TimelineCutMarker {
 
 export interface VideoShowcaseItem {
   id: string;
-  category: 'hacks-edit' | 'talking-head' | 'car-speed' | 'documentary' | 'sports-brand';
+  category: 'hacks-edit' | 'car-speed' | 'sports-brand' | 'documentary';
   categoryLabel: string;
   title: string;
   subtitle: string;
   description: string;
   thumbnail: string;
   videoSrc: string;
-  aspect: '16:9' | '9:16';
+  aspect: '16:9';
   featuredSpan?: boolean;
   duration: string;
   fps: string;
@@ -154,7 +183,7 @@ export interface WorkProcessItem {
   targetOutcome: string;
 }
 
-export const HERO_IMAGE = heroEditingSuiteImg;
+export const HERO_IMAGE = reelTalkingHeadImg;
 
 export const SOCIAL_LINKS = {
   youtubeChannel: 'https://youtube.com/@deerghhadiyal',
@@ -204,7 +233,7 @@ export const SERVICES: ServiceItem[] = [
     index: '01',
     title: 'Short-Form Editing',
     description:
-      'Fast-paced, attention-grabbing edits optimized for Reels, TikToks, and Shorts with trending transitions, speed ramps, and effects.',
+      'Fast-paced, attention-grabbing 9:16 edits optimized for Reels, TikToks, and Shorts with trending transitions, speed ramps, and effects.',
     deliverables: 'Talking Head · Speed Ramps · CapCut & Premiere Hybrid',
     turnaround: '24–48h Delivery',
   },
@@ -234,9 +263,9 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     index: '05',
-    title: 'Thumbnail Design',
+    title: 'Thumbnail & Cover Design',
     description:
-      'Eye-catching thumbnails engineered to maximize click-through rates and viewer interest from the very first impression.',
+      'Eye-catching 9:16 Reel covers and YouTube thumbnails engineered to maximize click-through rates and viewer interest.',
     deliverables: 'High-Contrast Composition · Visual Curiosity Gap · A/B Variants',
     turnaround: 'CTR Focused',
   },
@@ -244,7 +273,7 @@ export const SERVICES: ServiceItem[] = [
     index: '06',
     title: 'Growth Strategy',
     description:
-      'Editing optimized for YouTube algorithm, sports brand pages, trending sounds, and platform-specific best practices.',
+      'Editing optimized for YouTube Shorts algorithm, sports brand pages, trending sounds, and platform-specific best practices.',
     deliverables: 'HACKS EDIT Formula · Loop Engineering · Trend Alignment',
     turnaround: 'Multi-Platform Ready',
   },
@@ -278,8 +307,8 @@ export const WHY_CHOOSE_ME: FeatureReason[] = [
   },
   {
     title: 'Multiple Platforms',
-    description: 'Expertise in YouTube, TikTok, Instagram Reels, and Snapchat.',
-    metric: 'Cross-Platform Specs',
+    description: 'Expertise in YouTube Shorts, TikTok, Instagram Reels, and Snapchat.',
+    metric: '9:16 Vertical Native',
   },
 ];
 
@@ -287,18 +316,18 @@ export const VIDEO_SHOWCASE: VideoShowcaseItem[] = [
   {
     id: 'hacks-edit-latest',
     category: 'hacks-edit',
-    categoryLabel: 'HACKS EDIT Series • Viral Short-Form',
-    title: 'Latest Upload — High-Velocity Entertainment & Talking Head',
-    subtitle: 'Check out my most recent video from the HACKS EDIT series',
+    categoryLabel: 'HACKS EDIT • Talking Head',
+    title: 'Latest Upload — High-Velocity Talking Head & Viral Hook',
+    subtitle: 'Check out my most recent 16:9 widescreen edit from the HACKS EDIT series',
     description:
-      'Fast-paced entertainment and talking-head editing combining frame-accurate speed ramps, kinetic captioning, layered whoosh/impact sound design, and zero-dead-air storytelling built for viral shareability.',
+      'Fast-paced 16:9 talking-head and entertainment editing combining frame-accurate speed ramps, kinetic captioning, layered whoosh/impact sound design, and zero-dead-air storytelling.',
     thumbnail: showcaseHacksEditImg,
     videoSrc: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     aspect: '16:9',
     featuredSpan: true,
     duration: '00:58',
     fps: '60 fps',
-    resolution: '4K UHD',
+    resolution: '3840x2160 4K',
     avgRetention: '94.2%',
     hookRate: '88.5%',
     softwareUsed: 'Premiere Pro · After Effects · CapCut',
@@ -309,7 +338,7 @@ export const VIDEO_SHOWCASE: VideoShowcaseItem[] = [
       {
         time: '00:00–00:03',
         label: 'Visual + Sonic Hook',
-        detail: 'Immediate motion cut paired with sub-bass drop and bold central kinetic title.',
+        detail: 'Immediate 16:9 motion cut paired with sub-bass drop and central kinetic title.',
       },
       {
         time: '00:04–00:19',
@@ -331,18 +360,18 @@ export const VIDEO_SHOWCASE: VideoShowcaseItem[] = [
   {
     id: 'car-speed-ramp',
     category: 'car-speed',
-    categoryLabel: 'Car Edit • Speed Ramp Mastery',
-    title: 'Featured Work — Automotive Speed Ramp & Beat Sync',
-    subtitle: 'High-impact car edit with optical flow speed ramps and LUT grading',
+    categoryLabel: 'Car Edit • Speed Ramp',
+    title: 'Featured Work — Automotive 16:9 Speed Ramp & Beat Sync',
+    subtitle: 'High-impact widescreen car edit with optical flow speed ramps and LUT grading',
     description:
-      'Engineered with razor-sharp velocity curves in After Effects and CapCut, syncing rolling automotive shots to heavy percussive stems with custom engine audio sweetening and halation glow.',
+      'Engineered with razor-sharp velocity curves in After Effects and CapCut, syncing widescreen automotive shots to heavy percussive stems with custom engine audio sweetening and halation glow.',
     thumbnail: showcaseColorGradeImg,
     videoSrc: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
     aspect: '16:9',
     featuredSpan: false,
     duration: '00:42',
     fps: '60 fps',
-    resolution: '4K UHD',
+    resolution: '3840x2160 4K',
     avgRetention: '96.0%',
     hookRate: '91.4%',
     softwareUsed: 'After Effects · DaVinci Resolve · CapCut',
@@ -371,17 +400,17 @@ export const VIDEO_SHOWCASE: VideoShowcaseItem[] = [
     id: 'sports-brand-edit',
     category: 'sports-brand',
     categoryLabel: 'Sports Brand Page • Commercial',
-    title: 'Sports Brand Page — High-Energy Athlete & Brand Reel',
-    subtitle: 'Trending sports & brand content optimized for maximum engagement',
+    title: 'Sports Brand Page — High-Energy Widescreen Athlete Reel',
+    subtitle: 'Trending 16:9 sports & brand content optimized for maximum engagement',
     description:
-      'Built for competitive sports brand pages and athlete reels. Combines crowd-roar soundscapes, dynamic speed-ramped action cuts, and bold kinetic score/stat overlays.',
+      'Built for competitive sports brand pages and commercial campaigns. Combines crowd-roar soundscapes, dynamic speed-ramped action cuts, and bold kinetic stat overlays.',
     thumbnail: showcaseViralRetentionImg,
     videoSrc: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
     aspect: '16:9',
     featuredSpan: false,
     duration: '00:45',
     fps: '60 fps',
-    resolution: '4K UHD',
+    resolution: '3840x2160 4K',
     avgRetention: '91.8%',
     hookRate: '86.0%',
     softwareUsed: 'Premiere Pro · After Effects · Audition',
@@ -409,18 +438,18 @@ export const VIDEO_SHOWCASE: VideoShowcaseItem[] = [
   {
     id: 'documentary-story',
     category: 'documentary',
-    categoryLabel: 'Documentary • Talking Head Narrative',
-    title: 'Studio Quality — Documentary Storytelling & Color Grade',
-    subtitle: 'Professional documentary editing with cinematic color grading',
+    categoryLabel: 'Documentary • Cinematic Narrative',
+    title: 'Studio Quality — 16:9 Documentary Storytelling & Grade',
+    subtitle: 'Professional widescreen documentary editing with cinematic color grading',
     description:
-      'Full narrative assembly and look development in Premiere Pro and DaVinci Resolve—blending talking-head interviews, 3D parallax archival stills, atmospheric sound design, and -14 LUFS broadcast mastering.',
+      'Full narrative assembly and look development in Premiere Pro and DaVinci Resolve—blending talking-head interviews, 3D parallax archival stills, atmospheric sound design, and -14 LUFS mastering.',
     thumbnail: heroEditingSuiteImg,
     videoSrc: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     aspect: '16:9',
     featuredSpan: false,
-    duration: '01:24',
+    duration: '01:15',
     fps: '24 fps',
-    resolution: '4K DCI',
+    resolution: '3840x2160 4K',
     avgRetention: '89.6%',
     hookRate: '84.2%',
     softwareUsed: 'DaVinci Resolve · Premiere Pro · Audition',
@@ -453,7 +482,7 @@ export const WORK_PROCESS: WorkProcessItem[] = [
     label: 'HACKS EDIT & Sports Brand Series',
     title: 'Fast-Paced Entertainment & Brand Content',
     description:
-      'Trend-focused, viral-ready content with quick cuts, speed ramps, trending audio, and maximized engagement hooks. Designed for explosive growth across YouTube, Reels, and sports brand pages.',
+      'Trend-focused, viral-ready 9:16 content with quick cuts, speed ramps, trending audio, and maximized engagement hooks. Designed for explosive growth across YouTube Shorts, Reels, and sports brand pages.',
     keyTechniques: 'Speed Ramping · Frame-Accurate Whip Transitions · Beat-Synced SFX',
     targetOutcome: 'Explosive Reach & Shareability',
   },
@@ -496,7 +525,7 @@ export const TECHNICAL_SKILLS = [
       'Speed Ramp Mastery',
       'Car Edits',
       'HACKS EDIT & Sports Brand Pages',
-      'Short-Form Video',
+      'Short-Form Video (9:16)',
       'Motion Graphics',
       'Color Grading & Sound Design',
     ],
@@ -639,7 +668,7 @@ export function downloadPortfolioDossier() {
     </div>
 
     <p class="summary">
-      I transform raw footage into engaging visual experiences designed to capture attention, improve retention, and tell compelling stories. Specializing in Talking Head, Documentary, Speed Ramp, Car Edits, CapCut & After Effects workflows, and HACKS EDIT / Sports Brand Pages.
+      I transform raw footage into engaging 9:16 vertical and cinematic visual experiences designed to capture attention, improve retention, and tell compelling stories. Specializing in Talking Head, Documentary, Speed Ramp, Car Edits, CapCut & After Effects workflows, and HACKS EDIT / Sports Brand Pages.
     </p>
 
     <h2>Core Experience & Editing Formats</h2>
@@ -667,7 +696,7 @@ export function downloadPortfolioDossier() {
 
     <h2>Technical Stack & Platforms</h2>
     <div class="skill-row"><strong>Software:</strong> Adobe Premiere Pro · DaVinci Resolve · After Effects · CapCut Pro · Adobe Audition</div>
-    <div class="skill-row"><strong>Specializations:</strong> Talking Head · Documentary · Speed Ramp · Car Edit · HACKS EDIT & Sports Brand Page · Short-Form Video · Motion Graphics · Color Grading</div>
+    <div class="skill-row"><strong>Specializations:</strong> Talking Head · Documentary · Speed Ramp · Car Edit · HACKS EDIT & Sports Brand Page · Short-Form Video (9:16) · Motion Graphics · Color Grading</div>
     <div class="skill-row"><strong>Platforms:</strong> YouTube · Instagram · TikTok · Snapchat · Twitter · LinkedIn</div>
 
     <div class="footer">
